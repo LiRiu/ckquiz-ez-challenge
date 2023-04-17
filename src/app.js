@@ -33,6 +33,10 @@ export function App() {
     asyncSleep(100).then(() => {
       if (ethereum.selectedAddress){ 
         setEthAddr(ethereum.selectedAddress);
+      } else {
+        ethereum.enable().then(([ethAddr]) => {
+          setEthAddr(ethAddr);
+        })
       }
     });
   }, []);
